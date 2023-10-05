@@ -62,6 +62,11 @@ const Router = () => {
                 options={{headerShown: false}}
             />
             <Stack.Screen
+                name="Profile"
+                component={Profile}
+                options={{headerShown: false}}
+            />
+            <Stack.Screen
                 name="FoodDetail"
                 component={FoodDetail}
                 options={{headerShown: false}}
