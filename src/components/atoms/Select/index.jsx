@@ -7,8 +7,8 @@ import {Picker} from '@react-native-picker/picker';
 import { styles } from './style';
 import { globalStyles } from '../../../Helpers/globalStyles';
 
-const Select = ({label, placeholder}) => {
-  const [selectedCity, setSelectedCity] = useState();
+const Select = ({label, placeholder, value, onSelectChange}) => {
+  // const [selectedCity, setSelectedCity] = useState();
 
   return (
     <View>
@@ -16,9 +16,9 @@ const Select = ({label, placeholder}) => {
         <View style={styles.select}>
           <Picker
             placeholder={placeholder}
-            selectedValue={selectedCity}
+            selectedValue={value}
             onValueChange={(itemValue, itemIndex) => {
-              setSelectedCity(itemValue)
+              onSelectChange(itemValue)
             }}
           >
           <Picker.Item label="Tangerang" value="Tangerang" />
