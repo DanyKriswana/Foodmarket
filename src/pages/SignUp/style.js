@@ -27,6 +27,14 @@ export const styles = StyleSheet.create({
          justifyContent: 'center',
          alignItems: 'center'
     },
+    imageContainer: {
+        borderRadius: 90,
+        width: 90, 
+        height: 90, 
+        backgroundColor: colors.superLightGrey,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     photoContainer: {
         borderRadius: 90,
         width: 90, 
