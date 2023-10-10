@@ -7,7 +7,7 @@ import axios from 'axios'
 import { Buttons, Gap, Select, TextInput } from '../../components/atoms'
 import { Header } from '../../components/molecules'
 
-import { setLoading,} from '../../redux/action'
+import { setLoading, signUpAction,} from '../../redux/action'
 import { useForm, showMessage } from '../../utils'
 import { styles } from './style'
 
@@ -30,42 +30,7 @@ const SignUpAddress = ({navigation}) => {
       ...registerReducer,
     }
     dispatch(setLoading(true))
-    axios.post('https://foodmarket-backend.buildwithangga.id/api/register', data)
-    .then((res) => {
-      console.log('data success: ', res.data);
-      if (photoReducer.isUploadPhoto){
-        const photoForUpload = new FormData();
-        photoForUpload.append('file', photoReducer)
-
-        axios.post(
-          'http://foodmarket-backend.buildwithangga.id/api/user/photo',
-          photoForUpload,
-          {
-            headers: {
-              Authorization: `${res.data.data.token_type} ${res.data.data.access_token}`,
-              'Content-Type': 'multipart/form-data',
-            }
-          })
-          .then((resUpload) => {
-            console.log('Success upload: ', resUpload)
-          })
-          .catch(err => {
-            showMessage('Upload photo tidak berhasil')
-          })
-      }
-      dispatch(setLoading(false))
-      showMessage('Register Success', 'success');
-      navigation.replace('SuccessSignUp');
-    })
-    .catch(error => {
-      dispatch(setLoading(false))
-      showMessage(error?.response?.data?.message)
-      if(error.response.status === 422){
-        console.error("Validation errors: ", error.response.data.message.error)
-      } else{
-        console.error("Error", error.message)
-      }
-    })
+    dispatch(signUpAction(data, photoReducer, navigation))
   }
 
   return (
