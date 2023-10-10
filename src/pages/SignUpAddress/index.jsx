@@ -1,14 +1,13 @@
-import { ScrollView, View } from 'react-native'
 import React from 'react'
+import { ScrollView, View } from 'react-native'
 
 import { useDispatch, useSelector } from 'react-redux'
-import axios from 'axios'
 
 import { Buttons, Gap, Select, TextInput } from '../../components/atoms'
 import { Header } from '../../components/molecules'
 
-import { setLoading, signUpAction,} from '../../redux/action'
-import { useForm, showMessage } from '../../utils'
+import { setLoading, signUpAction, } from '../../redux/action'
+import { useForm } from '../../utils'
 import { styles } from './style'
 
 const SignUpAddress = ({navigation}) => {
